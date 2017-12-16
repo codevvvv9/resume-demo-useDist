@@ -140,7 +140,7 @@ hr {
 .userCard dl dt,
 .userCard dl dd {
     float: left;
-    margin: 5px 0;
+    margin: 10px 0;
 }
 .userCard dl dt {
     width: 30%;
