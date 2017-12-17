@@ -2,6 +2,7 @@ body{
     background-color: #EFEFEF;
     color: black;
     margin: 0;
+    font-family: Microsoft YaHei;
 }
 a{
     color: inherit;
@@ -16,6 +17,13 @@ hr {
     height: 0;
     border: none;
     border-top: 1px solid #DEDEDE;
+}
+ul, ol {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
 }
 .clearfix::after{
     content: '';
@@ -55,6 +63,7 @@ hr {
     font-size: 12px;
     color: #9B897A;
     font-weight: bold;
+    font-family: Microsoft YaHei;
     border-top: 3px solid transparent;
     border-bottom: 3px solid transparent;
     padding-top: 5px;
@@ -94,6 +103,7 @@ hr {
     margin-left: auto;
     margin-right: auto;
     background-color: #FFFFFF;
+    box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.5);
 }
 .userCard .welcome {
     background-color: #E8676B;
@@ -130,6 +140,8 @@ hr {
 }
 .userCard .text p {
     margin-top: 7px;
+    font-family: Microsoft YaHei;
+    font-size: 18px;
 }
 .userCard .text hr {
     margin: 20px 0;
@@ -171,4 +183,143 @@ hr {
     height: 30px;
     fill: white;
     vertical-align: top;
+}
+body > main{
+    margin-top: -350px;
+}
+body > main .downloadResume-wrapper{
+    text-align: center;
+}
+body > main .downloadResume {
+    font-size: 14px;
+    line-height: 16px;
+    border: 1px solid #CDCFD1;
+    padding: 21px 55px;
+    display: inline-block;
+    background: #EFEFEF;
+    border-radius: 10px;
+    color: #3d4451;
+    font-weight: bold;
+    margin: 32px 0px;
+    transition: box-shadow 0.2s;
+}
+body > main .downloadResume:hover {
+    box-shadow: 0px 4px 12px 1px rgba(0,0,0,0.3);
+}
+.selfIntroduction {
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    line-height: 1.8;
+    font-family: kaiti;
+    font-size: 19px;
+    font-weight: bold;
+}
+section.skills,
+section.portfolio {
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+}
+section.skills > h2,
+section.portfolio > h2{
+    color: #3d4451;
+    font-size: 34px;
+    line-height: 1.2;
+    font-weight: 600;
+    text-align: center;
+}
+
+section.skills  h3 {
+    font-size: 14px;
+    line-height: 1.1;
+    padding-right: 40px;
+}
+section.skills > ol {
+    background: white;
+    box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.5);
+    padding: 42px 50px 10px;
+    margin-top: 30px;
+}
+section.skills > ol > li{
+    float: left;
+    width: 48%;
+    box-sizing: border-box;
+}
+section.skills > ol > li:nth-child(even){
+    float: right;
+}
+section.skills .progressBar{
+    height: 5px;
+    /* border: 1px solid #E8676B; */
+    background: #FAE0E0;
+    border-radius: 2px;
+    margin: 4px 0 40px;
+}
+section.skills .progressBar > .progress{
+    height: 100% ;
+    background: #E8676B;
+    width: 70%;
+    border-radius: 2px;
+}
+section.portfolio {
+    text-align: center;
+    margin-bottom: 100px;
+}
+section.portfolio > nav {
+    text-align: center;
+}
+section.portfolio > nav > ol {
+    /* border: 1px solid red; */
+    display: inline-block;
+    vertical-align: top;
+}
+section.portfolio > nav > ol > li {
+    float: left;
+    margin-left: 40px;
+    cursor: pointer;
+}
+section.portfolio > nav > ol > li:nth-child(1) {
+    margin-left: 0;
+}
+section.portfolio > nav {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 32px;
+}
+section.portfolio > nav .bar {
+    height: 6px;
+    background: white;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    border-radius: 3px;
+}
+
+section.portfolio > nav .bar-inner {
+    height: 100%;
+    background: #E8676B;
+    border-radius: 3px;
+    transition: all 0.2s;
+}
+section.portfolio > nav .bar.state-1 .bar-inner {
+    margin-left: 0;
+    width: 32px;
+}
+section.portfolio > nav .bar.state-2 .bar-inner {
+    margin-left: 72px;
+    width: 36px;
+}
+section.portfolio > nav .bar.state-3 .bar-inner {
+    margin-left: 151px;
+    width: 102px;
+}
+section.portfolio .works {
+    position: relative;
+    /* border: 1px solid red; */
+}
+section.portfolio .works > .big,
+section.portfolio .works > .small {
+    position: absolute;
 }
