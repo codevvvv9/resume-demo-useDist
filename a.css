@@ -152,7 +152,7 @@ h1, h2, h3, h4, h5, h6 {
 .userCard dl dt,
 .userCard dl dd {
     float: left;
-    margin: 10px 0;
+    margin: 8px 0;
 }
 .userCard dl dt {
     width: 30%;
