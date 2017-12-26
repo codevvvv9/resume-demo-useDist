@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    <div class="site-welcome active">
+    <div id=siteWelcome class="site-welcome active">
         <div class="loading"></div>
     </div>
 
@@ -217,6 +217,11 @@
             </div>
         </div>
     </section>
+    <script>
+        setTimeout(function(){
+            siteWelcome.classList.remove('active')
+        }, 3000)
+    </script>
 </body>
 
 </html>
