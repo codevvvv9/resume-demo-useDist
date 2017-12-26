@@ -37,7 +37,7 @@
         <div class="loading"></div>
     </div>
 
-    <div class="topNavBar">
+    <div id=sticky class="topNavBar">
         <div class="topNavBar-inner clearfix">
             <a href="#" class="logo" alt="logo" style="float: left;">
                 <span class="rs">RS</span>
@@ -221,6 +221,14 @@
         setTimeout(function(){
             siteWelcome.classList.remove('active')
         }, 3000)
+
+        window.onscroll = function(scroll){
+            if(window.scrollY > 0){
+                sticky.classList.add('sticky')
+            } else{
+                sticky.classList.remove('sticky')
+            }
+        }
     </script>
 </body>
 
