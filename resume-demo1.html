@@ -250,6 +250,23 @@
             }
             
         }
+
+        let aTags = document.querySelectorAll('nav > ul > li > a')
+        for (let i = 0; i < aTags.length; i++){
+            aTags[i].onclick = function(msg){
+                msg.preventDefault()//阻止默认动作
+                // console.log(msg)
+                // console.log(msg.currentTarget)
+                let a = msg.currentTarget
+                console.log(a.getAttribute('href'))//写的什么什么就是什么
+                // console.log(a.href)//带http协议
+                let href = a.getAttribute('href')
+                let element = document.querySelector(href)
+                let rect = element.getBoundingClientRect()
+                let top = element.offsetTop
+                window.scrollTo(0, top - 80)
+            }
+        }
     </script>
 </body>
 
