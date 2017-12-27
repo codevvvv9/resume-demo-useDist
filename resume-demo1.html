@@ -43,7 +43,7 @@
                 <span class="rs">RS</span>
                 <span class="card">card</span>
             </a>
-            <nav style="float: right;">
+            <nav class='menu' style="float: right;">
                 <ul class="clearfix">
                     <li>
                         <a href="#">关于</a>
@@ -240,17 +240,13 @@
             }
         }
 
-        let liTags = document.getElementsByClassName('menuTrigger')
+        let liTags = document.querySelectorAll('nav.menu > ul > li')
         for (let i = 0; i < liTags.length; i++){
             liTags[i].onmouseenter = function(msg){
-                let li = msg.currentTarget
-                let brother = li.getElementsByTagName('ul')[0]    
-                brother.classList.add('active')
+                msg.currentTarget.classList.add('active')
             }
             liTags[i].onmouseleave = function(msg){
-                let li = msg.currentTarget
-                let brother = li.getElementsByTagName('ul')[0]    
-                brother.classList.remove('active')
+                msg.currentTarget.classList.remove('active')
             }
             
         }

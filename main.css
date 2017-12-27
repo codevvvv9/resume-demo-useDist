@@ -24,7 +24,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: normal;}
     display: block;
     position: relative;
 }
-.topNavBar nav > ul > li > a:hover::after{
+.topNavBar nav > ul > li.active > a::after{
     /* border-bottom: 3px solid ; */
     content: '';
     display: block;
@@ -51,10 +51,20 @@ h1, h2, h3, h4, h5, h6 { font-weight: normal;}
     top: 100%;
     background: white;
     color: #3d4451;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
-.topNavBar .submenu.active{
+.topNavBar li.active >.submenu{
     display: block;
     position: absolute;
+    animation: submenuSlide 0.3s;
+}
+@keyframes submenuSlide{
+    from{
+        margin-right: 100%;
+    }
+    to{
+        margin: 0%;
+    }
 }
 .topNavBar .submenu > li{
     white-space: nowrap;
