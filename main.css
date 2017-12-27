@@ -47,8 +47,10 @@ h1, h2, h3, h4, h5, h6 { font-weight: normal;}
 .topNavBar .submenu{
     display: none;
     position: absolute;
-    left: 0;
+    right: 0;
     top: 100%;
+    background: white;
+    color: #3d4451;
 }
 .topNavBar .submenu.active{
     display: block;
@@ -56,6 +58,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: normal;}
 }
 .topNavBar .submenu > li{
     white-space: nowrap;
+    padding: 5px 10px;
 }
 .topNavBar .logo {
     font-size: 24px;
