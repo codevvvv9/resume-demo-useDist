@@ -6,6 +6,9 @@ ul, ol {list-style: none;}
 h1, h2, h3, h4, h5, h6 { font-weight: normal;}
 .clearfix::after{content: '';display: block;clear: both;}
 
+[data-x].active{
+    outline: 10px solid red;
+}
 .topNavBar{ padding: 16px 0px 16px 0px;position: fixed;top: 0;left: 0; width: 100%;transition: all 1.3s; color: #9B897A;}
 .topNavBar.sticky{background: white; padding: 8px 0px; z-index: 1; box-shadow: 0 0 16px rgba(0, 0, 0, 0.8); color: #3d4451;}
 .topNavBar-inner {padding: 0 16px;}

@@ -90,7 +90,7 @@
         <div class="mask"></div>
     </div>
     <main>
-        <div id="siteAbout" class="userCard">
+        <div data-x id="siteAbout" class="userCard">
             <div class="pictureAndText clearfix">
                 <div class="picture">
                     <img src="./img/avatar.jpg" width="299.25" height="347.28" alt="头像">
@@ -156,7 +156,7 @@
 
         </p>
     </main>
-    <section id="siteSkills" class="skills">
+    <section data-x id="siteSkills" class="skills">
         <h2>技能</h2>
         <ol class="clearfix">
             <li>
@@ -197,7 +197,7 @@
             </li>
         </ol>
     </section>
-    <section class="portfolio" id="siteWorks">
+    <section data-x class="portfolio" id="siteWorks">
         <h2>作品集</h2>
         <nav>
             <ol class="clearfix">
@@ -244,6 +244,31 @@
             } else {
                 sticky.classList.remove('sticky')
             }
+            
+            let specialTags = document.querySelectorAll('[data-x]')
+            let minIndex = 0
+            for (let i = 1; i < specialTags.length; i++) {
+                if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)) {
+                    minIndex = i;
+                }
+            }
+
+            for (let i = 0; i < specialTags.length; i++) {
+                specialTags[i].classList.remove('active')
+            }
+
+            specialTags[minIndex].classList.add('active')
+            let id = specialTags[minIndex].id
+            console.log(id)
+            //根据id找对应的元素
+            let a = document.querySelector('a[href="#' + id + '"]')
+            let li = a.parentNode
+            let brothersAndMe = li.parentNode.children
+            for (let i = 0; i < brothersAndMe.length; i++){
+                brothersAndMe[i].classList.remove('active')
+            }
+            li.classList.add('active')
+            console.log(li)
         }
 
         let liTags = document.querySelectorAll('nav.menu > ul > li')
@@ -277,19 +302,19 @@
                 let element = document.querySelector(href)
                 let rect = element.getBoundingClientRect()
                 let top = element.offsetTop
-                
+
                 let currentTop = window.scrollY //起始位置
                 let targetTop = top - 80 //结束位置
                 let s = targetTop - currentTop
-                console.log(s)
-                var coords = {y: currentTop };
-                var t = Math.abs((s/100)*300);
-                if(t > 500) {t = 500}
+                //console.log(s)
+                var coords = { y: currentTop };
+                var t = Math.abs((s / 100) * 300);
+                if (t > 500) { t = 500 }
                 var tween = new TWEEN.Tween(coords)
-                    .to({y: targetTop }, t)
+                    .to({ y: targetTop }, t)
                     .easing(TWEEN.Easing.Quadratic.InOut)
                     .onUpdate(function () {
-                       window.scrollTo(0, coords.y)
+                        window.scrollTo(0, coords.y)
                     })
                     .start();
 
