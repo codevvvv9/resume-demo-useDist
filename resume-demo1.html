@@ -17,16 +17,21 @@
             fill: currentColor;
             overflow: hidden;
         }
-        .site-welcome{
+
+        .site-welcome {
             display: none;
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: gray;
             justify-content: center;
             align-items: center;
             z-index: 1;
         }
-        .site-welcome.active{
+
+        .site-welcome.active {
             display: flex;
         }
     </style>
@@ -227,44 +232,82 @@
             </div>
         </div>
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.1.1/Tween.min.js"></script>
     <script>
-        setTimeout(function(){
+        setTimeout(function () {
             siteWelcome.classList.remove('active')
         }, 3000)
 
-        window.onscroll = function(scroll){
-            if(window.scrollY > 0){
+        window.onscroll = function (scroll) {
+            if (window.scrollY > 0) {
                 sticky.classList.add('sticky')
-            } else{
+            } else {
                 sticky.classList.remove('sticky')
             }
         }
 
         let liTags = document.querySelectorAll('nav.menu > ul > li')
-        for (let i = 0; i < liTags.length; i++){
-            liTags[i].onmouseenter = function(msg){
+        for (let i = 0; i < liTags.length; i++) {
+            liTags[i].onmouseenter = function (msg) {
                 msg.currentTarget.classList.add('active')
             }
-            liTags[i].onmouseleave = function(msg){
+            liTags[i].onmouseleave = function (msg) {
                 msg.currentTarget.classList.remove('active')
             }
-            
+
         }
 
         let aTags = document.querySelectorAll('nav > ul > li > a')
-        for (let i = 0; i < aTags.length; i++){
-            aTags[i].onclick = function(msg){
+        function animate(time) {
+            requestAnimationFrame(animate);
+            TWEEN.update(time);
+        }
+        requestAnimationFrame(animate);
+
+
+        for (let i = 0; i < aTags.length; i++) {
+            aTags[i].onclick = function (msg) {
                 msg.preventDefault()//阻止默认动作
                 // console.log(msg)
                 // console.log(msg.currentTarget)
                 let a = msg.currentTarget
-                console.log(a.getAttribute('href'))//写的什么什么就是什么
+                //console.log(a.getAttribute('href'))//写的什么什么就是什么
                 // console.log(a.href)//带http协议
                 let href = a.getAttribute('href')
                 let element = document.querySelector(href)
                 let rect = element.getBoundingClientRect()
                 let top = element.offsetTop
-                window.scrollTo(0, top - 80)
+                let currentTop = window.scrollY //起始位置
+                let targetTop = top - 80 //结束位置
+
+                var coords = {y: currentTop };
+                var tween = new TWEEN.Tween(coords)
+                    .to({y: targetTop }, 1000)
+                    .easing(TWEEN.Easing.Quadratic.Out)
+                    .onUpdate(function () {
+                       window.scrollTo(0, coords.y)
+                    })
+                    .start();
+
+                // let n = 25 //一共动25次
+                // let t = 500 / n //多长时间动一次
+                // let currentTop = window.scrollY
+                // let targetTop = top - 80
+                // let S = targetTop - currentTop
+                // let s = S / n//每次移动的距离
+                // let i = 0
+                // // console.log(currentTop)
+                // // console.log(targetTop)
+                // // console.log(distance)
+                // let id = setInterval(() => {
+                //     if (i === n) {
+                //         window.clearInterval(id)
+                //         return
+                //     }
+                //     i = i + 1
+                //     window.scrollTo(0, currentTop + distance * i)
+                // }, t)
+
             }
         }
     </script>
