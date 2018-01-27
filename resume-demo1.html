@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>吴少林的个人简历</title>
-    <link rel="stylesheet" href="./main.css">
     <link rel="stylesheet" href="./loading.css">
+    <link rel="stylesheet" href="./node_modules/swiper/dist/css/swiper.min.css">
     <script src="//at.alicdn.com/t/font_511143_hb7eteggodj6pqfr.js"></script>
+    <link rel="stylesheet" href="./main.css">
     <style type="text/css">
         .icon {
             width: 1em;
@@ -34,6 +35,7 @@
         .site-welcome.active {
             display: flex;
         }
+        
     </style>
 </head>
 
@@ -199,28 +201,29 @@
     </section>
     <section data-x class="portfolio" id="siteWorks">
         <h2>作品集</h2>
-        <nav>
-            <ol class="clearfix">
-                <li id="portfolio1">所有</li>
-                <li id="portfolio2">框架</li>
-                <li id="portfolio3">原生JS &amp; CSS</li>
-            </ol>
-            <div id="portfolioBar" class="bar state-1">
-                <div class="bar-inner"></div>
+        
+        <!-- 作品集-->
+        <!-- Slider main container -->
+        <div class="swiper-container">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <img src="./img/works/nav-page.png" class="swiper-slide">
+                    <img src="./img/works/appleSlides.png" class="swiper-slide">
+                    <img src="./img/works/canvas.jpg" class="swiper-slide">
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+            
+                
+            
+                <!-- If we need scrollbar -->
+                <!-- <div class="swiper-scrollbar"></div> -->
             </div>
-            <script>
-                portfolio1.onclick = function () {
-                    portfolioBar.className = "bar state-1";
-                }
-                portfolio2.onclick = function () {
-                    portfolioBar.className = "bar state-2";
-                }
-                portfolio3.onclick = function () {
-                    portfolioBar.className = "bar state-3";
-                }
-            </script>
-        </nav>
-        <div class="works" style="height: 597px">
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        <!-- <div class="works" style="height: 597px">
             <div class="big" style="top: 0px; left: 0px;">
                 <img src="./img/1.jpg" alt="作品1" width="606px" height="597px">
             </div>
@@ -230,9 +233,33 @@
             <div class="small" style="top: 319px; left: 646px;">
                 <img src="./img/3.jpg" alt="作品3" width="293px" height="278px">
             </div>
-        </div>
+        </div> -->
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.1.1/Tween.min.js"></script>
+    <script src="./node_modules/swiper/dist/js/swiper.min.js"></script>
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+            // Optional parameters
+            // direction: 'vertical',
+            loop: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // And if we need scrollbar
+            // scrollbar: {
+            //     el: '.swiper-scrollbar',
+            // },
+        })
+    </script>
     <script>
         // setTimeout(function () {
         //     siteWelcome.classList.remove('active')
@@ -245,7 +272,7 @@
         }
 
        
-        findCloest() //没滑动就让他出现
+        // findCloest() //没滑动就让他出现
        
         
         window.onscroll = function (scroll) {
