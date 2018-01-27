@@ -10,39 +10,12 @@
     <link rel="stylesheet" href="./node_modules/swiper/dist/css/swiper.min.css">
     <script src="//at.alicdn.com/t/font_511143_hb7eteggodj6pqfr.js"></script>
     <link rel="stylesheet" href="./main.css">
-    <style type="text/css">
-        .icon {
-            width: 1em;
-            height: 1em;
-            vertical-align: -0.15em;
-            fill: currentColor;
-            overflow: hidden;
-        }
-
-        .site-welcome {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: gray;
-            justify-content: center;
-            align-items: center;
-            z-index: 1;
-        }
-
-        .site-welcome.active {
-            display: flex;
-        }
-        
-    </style>
 </head>
 
 <body>
-    <!-- <div id=siteWelcome class="site-welcome active">
+    <div id=siteWelcome class="site-welcome active">
         <div class="loading"></div>
-    </div> -->
+    </div>
 
     <div id=sticky class="topNavBar">
         <div class="topNavBar-inner clearfix">
@@ -261,9 +234,9 @@
         })
     </script>
     <script>
-        // setTimeout(function () {
-        //     siteWelcome.classList.remove('active')
-        // }, 500)
+        setTimeout(function () {
+            siteWelcome.classList.remove('active')
+        }, 1500)
 
         //添加 offset类
         let specialTags = document.querySelectorAll('[data-x]')
