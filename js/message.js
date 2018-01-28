@@ -1,62 +1,85 @@
-var APP_ID = 'Ab4oz3wKJtsVx6Kl2hFRLMSC-gzGzoHsz';
-var APP_KEY = 'itr83SzDAu6ccBwvfnkoSJoO';
+!function () {
+    var view = document.querySelector('section.message')
+    
+    var model = {
+        /**
+         * 获取数据
+         */
+        fetch: function () {
+            var query = new AV.Query('Message');
+            return query.find() //是一个Promise对象
 
-AV.init({
-  appId: APP_ID,
-  appKey: APP_KEY
-});
-
-var query = new AV.Query('Message');
-query.find()
-    .then(
-        function (messages) {
-            let array = messages.map(function (item) {
-                return item.attributes
-            })
-            array.forEach((item) => {
-                let li = document.createElement('li')
-                li.innerText = `${item.name}: ${item.content}`
-                let messagesList = document.querySelector('#messagesList')
-                messagesList.appendChild(li)
+        },
+        /**
+         * 保存数据
+         */
+        save: function (name, content) {
+            var Message = AV.Object.extend('Message');
+            var message = new Message();
+            //会返回一个Promise对象
+            return message.save({
+                'name': name,
+                'content': content
+            })  
+        }
+    }
+    var controller = {
+        view: null,
+        messagesList: null,
+        init: function (view) {
+            this.view = view
+            this.messagesList = view.querySelector('#messagesList')
+            this.form = view.querySelector('form')
+            this.initAV()
+            this.loadMessages()
+            this.bindEvents()
+        },
+        initAV: function () {
+            var APP_ID = 'Ab4oz3wKJtsVx6Kl2hFRLMSC-gzGzoHsz';
+            var APP_KEY = 'itr83SzDAu6ccBwvfnkoSJoO';
+            AV.init({appId: APP_ID,appKey: APP_KEY});
+        },
+        loadMessages: function () {
+           model.fetch().then(
+                function (messages) {
+                    let array = messages.map(function (item) {
+                        return item.attributes
+                    })
+                    array.forEach((item) => {
+                        let li = document.createElement('li')
+                        li.innerText = `${item.name}: ${item.content}`
+                        this.messagesList.appendChild(li)
+                    })
+                },
+                function (error) {
+                    alert('提交失败， 请改天来留言')
+                })
+                .then(() => { }, (error) => {
+                    console.log(error)
+                });
+        },
+        bindEvents: function () {
+            this.form.addEventListener('submit', (e) => {
+                e.preventDefault()
+                this.saveMessage()
             })
         },
-        function (error) {
-            alert('提交失败， 请改天来留言')
-        })
-    .then(() => {}, (error) => {
-        console.log(error)
-    });
-let myForm = document.querySelector('#postMessageForm')
+        saveMessage: function () {
+            let myForm = this.form
+            let name = myForm.querySelector('input[name=name]').value
+            let content = myForm.querySelector('input[name=content]').value
+            model.save(name, content).then(function (object) {
+                let li = document.createElement('li')
+                li.innerText = `${object.attributes.name}: ${object.attributes.content}`
+                let messagesList = document.querySelector('#messagesList')
+                messagesList.appendChild(li)
+                myForm.querySelector('input[name=name]').value = ''
+                myForm.querySelector('input[name=content]').value = ''
+                console.log(object);
+            })
+        }
 
-myForm.addEventListener('submit', function (e) {
-    e.preventDefault()
-    let name = myForm.querySelector('input[name=name]').value
-    let content = myForm.querySelector('input[name=content]').value
-    var Message = AV.Object.extend('Message');
-    var message = new Message();
-    message.save({
-        'name': name,
-        'content': content
-    }).then(function (object) {
-        let li = document.createElement('li')
-        li.innerText = `${object.attributes.name}: ${object.attributes.content}`
-        let messagesList = document.querySelector('#messagesList')
-        messagesList.appendChild(li)
-        myForm.querySelector('input[name=name]').value = ''
-        myForm.querySelector('input[name=content]').value = ''
-        console.log(object);
-    })
+    }
 
-})
-
-// //创建 TestObject表
-// var TestObject = AV.Object.extend('Wushao');
-// //在表中创建一行数据
-// var testObject = new TestObject();
-// //在表中写入words: Hello World 并保存
-// //保存成功后弹出对话框
-// testObject.save({
-//   words: '第二次!'
-// }).then(function(object) {
-//   alert('LeanCloud Rocks!');
-// })
+    controller.init(view)
+}.call()
