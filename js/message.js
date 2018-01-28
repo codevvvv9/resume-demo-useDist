@@ -2,6 +2,11 @@
     var view = document.querySelector('section.message')
     
     var model = {
+        initAV: function () {
+            var APP_ID = 'Ab4oz3wKJtsVx6Kl2hFRLMSC-gzGzoHsz';
+            var APP_KEY = 'itr83SzDAu6ccBwvfnkoSJoO';
+            AV.init({appId: APP_ID,appKey: APP_KEY});
+        },
         /**
          * 获取数据
          */
@@ -25,22 +30,20 @@
     }
     var controller = {
         view: null,
+        model: null,
         messagesList: null,
-        init: function (view) {
+        init: function (view, model) {
             this.view = view
+            this.model = model
+
             this.messagesList = view.querySelector('#messagesList')
             this.form = view.querySelector('form')
-            this.initAV()
+            this.model.initAV()
             this.loadMessages()
             this.bindEvents()
         },
-        initAV: function () {
-            var APP_ID = 'Ab4oz3wKJtsVx6Kl2hFRLMSC-gzGzoHsz';
-            var APP_KEY = 'itr83SzDAu6ccBwvfnkoSJoO';
-            AV.init({appId: APP_ID,appKey: APP_KEY});
-        },
         loadMessages: function () {
-           model.fetch().then(
+           this.model.fetch().then(
                 function (messages) {
                     let array = messages.map(function (item) {
                         return item.attributes
@@ -68,7 +71,7 @@
             let myForm = this.form
             let name = myForm.querySelector('input[name=name]').value
             let content = myForm.querySelector('input[name=content]').value
-            model.save(name, content).then(function (object) {
+            this.model.save(name, content).then(function (object) {
                 let li = document.createElement('li')
                 li.innerText = `${object.attributes.name}: ${object.attributes.content}`
                 let messagesList = document.querySelector('#messagesList')
@@ -81,5 +84,5 @@
 
     }
 
-    controller.init(view)
+    controller.init(view, model)
 }.call()
