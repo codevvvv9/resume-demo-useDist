@@ -1,0 +1,353 @@
+body{background-color: #fefefe; color: black;margin: 0;font-family: Microsoft YaHei;}
+a{color: inherit; text-decoration: none;}
+* { margin: 0; padding: 0;}
+hr { height: 0;border: none;border-top: 1px solid #DEDEDE;}
+ul, ol {list-style: none;}
+h1, h2, h3, h4, h5, h6 { font-weight: normal;}
+.clearfix::after{content: '';display: block;clear: both;}
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+.site-welcome {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: gray;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+.site-welcome.active {
+    display: flex;
+}
+[data-x].active{
+    outline: 10px solid red;
+}
+[data-x].offset{
+    transform: translateY(160px);
+}
+[data-x]{
+    transform: translateY(0);
+    transition: all 0.5s;
+}
+.topNavBar{ padding: 16px 0px 16px 0px;position: fixed;top: 0;left: 0; width: 100%;transition: all 1.3s; color: #9B897A;}
+.topNavBar.sticky{background: white; padding: 8px 0px; z-index: 1; box-shadow: 0 0 16px rgba(0, 0, 0, 0.8); color: #3d4451;}
+.topNavBar-inner {padding: 0 16px;}
+.topNavBar {
+    nav {padding-top: 4px;padding-bottom: 1px;
+      > ul{list-style: none; margin: 0; padding: 0;
+        > li{float: left;  margin-left: 17px;margin-right: 17px; position: relative;
+            > a{font-size: 12px; color: inherit; font-weight: bold; font-family: Microsoft YaHei; border-top: 3px solid transparent; border-bottom: 3px solid transparent; padding-top: 5px; padding-bottom: 5px; display: block; position: relative;
+            }
+        }
+      }
+    }
+}
+// .topNavBar nav {padding-top: 4px;padding-bottom: 1px;}
+// .topNavBar nav > ul{list-style: none; margin: 0; padding: 0;}
+// .topNavBar nav > ul > li{float: left;  margin-left: 17px;margin-right: 17px; position: relative;}
+// .topNavBar nav > ul > li > a{
+//     font-size: 12px;
+//     color: inherit;
+//     font-weight: bold;
+//     font-family: Microsoft YaHei;
+//     border-top: 3px solid transparent;
+//     border-bottom: 3px solid transparent;
+//     padding-top: 5px;
+//     padding-bottom: 5px;
+//     display: block;
+//     position: relative;
+// }
+.topNavBar nav > ul > li.active > a::after,
+.topNavBar nav > ul > li.highlight > a::after{
+    /* border-bottom: 3px solid ; */
+    content: '';
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #E46856;
+    height: 3px;
+    animation: menuSlide 0.3s linear;
+}
+@keyframes menuSlide{
+    from{
+        width: 0;
+    }
+    to{
+        width: 100%;
+    }
+}
+.topNavBar .submenu{
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: white;
+    color: #3d4451;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+.topNavBar li.active >.submenu{
+    display: block;
+    position: absolute;
+    animation: submenuSlide 0.3s;
+}
+@keyframes submenuSlide{
+    from{
+        margin-right: 100%;
+    }
+    to{
+        margin: 0%;
+    }
+}
+.topNavBar .submenu > li{
+    white-space: nowrap;
+    padding: 5px 10px;
+}
+.topNavBar .logo {
+    font-size: 24px;
+    font-family: Arial Black;
+    padding-top: 3.2px;
+    padding-bottom: 3.2px;
+}
+.topNavBar .logo .rs{
+    margin-right: 4px;
+    color: #E46856;
+}
+.topNavBar .logo .card{
+    color: #A69382;
+}
+.banner {
+    height: 515px;
+    background-image: url(../img/rs-cover.jpg);
+    background-position: center center;
+    background-size: cover;
+    
+}
+.banner .mask{
+    height: 515px;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.userCard { 
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #FFFFFF;
+    box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.5);
+}
+.userCard .welcome {
+    background-color: #E8676B;
+    color: #FFFDFD;
+    display: inline-block;
+    padding: 5px 11px;
+    line-height: 19px;
+    position: relative;
+    margin-bottom: 11px;
+    /* border: 1px solid blue; */
+}
+.userCard .welcome .triangle{
+    display: block;
+    width: 0px;
+    height: 0px;  
+   /* 虽然可以不写，因为div没有内容，高度就是0，但是写上好看 */
+    border: 10px solid transparent;
+    border-left-color: #E8676B;
+    border-top-width: 0px;
+    position: absolute;
+    left: 4px;
+    top: 100%;
+}
+.userCard .picture {
+    float: left;
+}
+.userCard .text {
+    float: left;
+    margin-left: 65px;
+    width: 470px;
+}
+.userCard .text h1 {
+    margin-top: 19px;
+}
+.userCard .text p {
+    margin-top: 7px;
+    font-family: Microsoft YaHei;
+    font-size: 18px;
+}
+.userCard .text hr {
+    margin: 20px 0;
+}
+.userCard .pictureAndText {
+    padding: 50px;
+}
+.userCard dl dt,
+.userCard dl dd {
+    float: left;
+    margin: 8px 0;
+}
+.userCard dl dt {
+    width: 30%;
+    font-weight: bold;
+}
+.userCard dl dd {
+    width: 70%;
+    color: #9da0a7;
+}
+.userCard > footer.media {
+    background: #E8676B;
+    text-align: center;
+}
+.userCard > footer.media > a {
+    /* border: 1px solid black; */
+    display: inline-block;
+    width:  40px;
+    line-height: 30px;
+    padding: 5px 0;
+    border-radius: 50%;
+    margin: 16px 26px;
+}
+.userCard > footer.media > a:hover {
+    background: #D05C60;
+}
+.userCard svg {
+    width: 30px;
+    height: 30px;
+    fill: white;
+    vertical-align: top;
+}
+body > main{
+    margin-top: -350px;
+}
+body > main .downloadResume-wrapper{
+    text-align: center;
+}
+body > main .downloadResume {
+    font-size: 14px;
+    line-height: 16px;
+    border: 1px solid #CDCFD1;
+    padding: 21px 55px;
+    display: inline-block;
+    background: #EFEFEF;
+    border-radius: 10px;
+    color: #3d4451;
+    font-weight: bold;
+    margin: 32px 0px;
+    transition: box-shadow 0.2s;
+}
+body > main .downloadResume:hover {
+    box-shadow: 0px 4px 12px 1px rgba(0,0,0,0.3);
+}
+.selfIntroduction {
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    line-height: 1.8;
+    font-family: kaiti;
+    font-size: 19px;
+    font-weight: bold;
+}
+section.skills,
+section.portfolio {
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+}
+section.skills > h2,
+section.portfolio > h2,
+section.message > h2{
+    color: #3d4451;
+    font-size: 34px;
+    line-height: 1.2;
+    font-weight: 600;
+    text-align: center;
+}
+
+section.skills  h3 {
+    font-size: 14px;
+    line-height: 1.1;
+    padding-right: 40px;
+}
+section.skills > ol {
+    background: white;
+    box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.5);
+    padding: 42px 50px 10px;
+    margin-top: 30px;
+}
+section.skills > ol > li{
+    float: left;
+    width: 48%;
+    box-sizing: border-box;
+}
+section.skills > ol > li:nth-child(even){
+    float: right;
+}
+section.skills .progressBar{
+    height: 5px;
+    /* border: 1px solid #E8676B; */
+    background: #FAE0E0;
+    border-radius: 2px;
+    margin: 4px 0 40px;
+    overflow: hidden;
+}
+section.skills .progressBar > .progress{
+    height: 100% ;
+    background: #E8676B;
+    width: 70%;
+    border-radius: 2px;
+    transform: translateX(0);
+    transition: all 1s; 
+}
+section.skills.offset .progress{
+    transform: translateX(-100%);
+}
+
+section.portfolio {
+    text-align: center;
+    margin-bottom: 100px;
+    max-width: 720px;
+}
+section.portfolio h2{
+    margin-bottom: 32px;
+}
+section.portfolio .works {
+    position: relative;
+    /* border: 1px solid red; */
+}
+section.portfolio .swiper-container {
+    width: 668px;
+    height: 501px;
+}
+section.portfolio .swiper-button-prev,
+section.portfolio .swiper-button-next
+{
+    background-color: white;
+    width: 64px;
+    height: 64px;
+    right: 100%;
+    left: auto;
+    border-radius: 50%;
+    margin: 10px auto;
+}
+section.portfolio .swiper-button-next{
+    left: 100%;
+    right: auto;
+}
+
+section.message > ol{
+    border-top: 1px solid #ddd;
+    max-width: 680px;
+    margin: 0 auto;
+}
+section.message > ol > li{
+    padding: 16px;
+    border-bottom: 1px solid #ddd;
+}
