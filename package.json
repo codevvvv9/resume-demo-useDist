@@ -3,25 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {
-    "swiper": "^4.1.0"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1"
-  },
+  "dependencies": {},
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "bulid": "babel src -d lib"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codevvvv9/resume-demo.git"
+    "url": "git+https://github.com/codevvvv9/resume-demo-useDist.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/codevvvv9/resume-demo/issues"
+    "url": "https://github.com/codevvvv9/resume-demo-useDist/issues"
   },
-  "homepage": "https://github.com/codevvvv9/resume-demo#readme"
+  "homepage": "https://github.com/codevvvv9/resume-demo-useDist#readme"
 }
