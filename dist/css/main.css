@@ -371,7 +371,18 @@ section.portfolio .swiper-button-next {
 section.portfolio .swiper-button-next {
   left: 100%;
   right: auto; }
-
+section.message {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+  border-radius: 10px;
+  box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.5);
+  padding-top: 10px;
+}
+section.message #postMessageForm {
+  padding-bottom: 32px;
+}
 section.message > ol {
   border-top: 1px solid #ddd;
   max-width: 680px;
